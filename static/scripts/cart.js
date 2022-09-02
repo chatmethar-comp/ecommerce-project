@@ -5,13 +5,35 @@ for (let i = 0; i < updateBtns.length; i++) {
         let productId = updateBtns[i].dataset.product;
         let action = updateBtns[i].dataset.action;
         console.log(productId, action);
-        console.log("user: ", user);
+        // console.log("user: ", user);
         if (user === "AnonymousUser") {
-            console.log("Not logged in");
+            addCookieItem(productId, action);
         } else {
-            updateUserOrder(productId, action)
+            updateUserOrder(productId, action);
         }
     })
+}
+
+function addCookieItem(productId, action) {
+    console.log('Not logged In');
+    if (action == "add") {
+        if (cart[productId] == undefined) {
+            cart[productId] = { 'quantity': 1 };
+        } else {
+            cart[productId]['quantity'] += 1;
+        }
+    }
+
+    if (action == "remove") {
+        cart[productId]['quantity'] -= 1;
+        if (cart[productId]['quantity'] <= 0) {
+            console.log('Remove Item')
+            delete cart[productId];
+        }
+    }
+    console.log('Cart:', cart);
+    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
+    location.reload();
 }
 
 const updateUserOrder = (productId, action) => {

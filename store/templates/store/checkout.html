@@ -54,6 +54,8 @@
                 <label for="formFile" class="form-label">Upload Slip</label>
                 <input class="form-control" type="file" id="formFile" name="slip">
               </div>
+              <label for="appt">Select a time:</label>
+            <input type="time" id="appt" name="appt">
             <button id="make-payment" class="btn btn-success btn-block">Make payment</button>
         </div>
     </div>
@@ -156,6 +158,8 @@
         .then((data)=>{
                 console.log('Success:',data);
                 alert('Transaction Completed!')
+                cart = {}
+                document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
                 window.location.href = '{% url 'store' %}'
         })
         
