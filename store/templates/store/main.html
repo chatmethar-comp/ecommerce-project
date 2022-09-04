@@ -51,6 +51,12 @@
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
         }
         console.log('Cart:', cart);
+
+        {% comment %} document.addEventListener('DOMContentLoaded', () => {
+            if(user !== 'AnonymousUser'){
+                document.getElementById('login-btn').classList.add('hidden');
+            }
+        }) {% endcomment %}
     </script>
 </head>
 
@@ -69,7 +75,7 @@
                 </li>
             </ul>
             <div class="form-inline my-2 my-lg-0">
-                <a href="#" class="btn btn-warning">Login</a>
+                <a href="{% url 'login' %}" id="login-btn" class="btn btn-warning">Login</a>
                 <a href="{% url 'cart' %}">
                     <img id="cart-icon" src="{% static 'image/cart.png' %}" alt="">
                 </a>
@@ -78,6 +84,14 @@
         </div>
     </nav>
     <div class="container">
+        {% if messages %}
+            {% for message in messages%}
+            <div class="alert alert-danger" role="alert">
+{{message}}
+              </div>
+
+            {% endfor %}
+        {% endif%}
         {% block content %}
 
         {% endblock content %}
