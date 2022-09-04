@@ -8,7 +8,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .utils import cartData, cookieCart, guestOrder
-# from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 

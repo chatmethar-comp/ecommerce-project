@@ -5,7 +5,7 @@
     <div class="col-lg-6">
         <div class="box-element" id="form-wrapper">
             <form action="" id="form">
-                {% comment %} {% csrf_token %} {% endcomment %}
+                {% csrf_token %}
                 <div id="user-info">
                     <div class="form-field">
                         <input class="form-control" type="text" name="name" placeholder="Name.." required>
@@ -50,13 +50,16 @@
                     save QR
                 </a>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 my-4">
                 <label for="formFile" class="form-label">Upload Slip</label>
                 <input class="form-control" type="file" id="formFile" name="slip">
               </div>
-              <label for="appt">Select a time:</label>
-            <input type="time" id="appt" name="appt">
-            <button id="make-payment" class="btn btn-success btn-block">Make payment</button>
+            <div class="my-4">
+
+                <label for="appt">Select a time:</label>
+                <input type="time" id="appt" name="appt">
+            </div>
+            <button id="make-payment" class="btn btn-success btn-block my-2">Make payment</button>
         </div>
     </div>
     
@@ -103,8 +106,9 @@
     }
 
     let form = document.getElementById('form');
-    {% comment %} csrftoken = form.getElementsByTagName('input')[0].value;
-    console.log('NewToken :',csrftoken) {% endcomment %}
+    
+    csrftoken = form.getElementsByTagName('input')[0].value;
+    console.log('NewToken :',csrftoken)
 
     form.addEventListener('submit', (e)=> {
         e.preventDefault();
