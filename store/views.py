@@ -46,7 +46,11 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 
+def dev_profile(request):
+    return render(request, 'store/dev_profile.html', {})
+
 # api call
+
 
 def update_item(request):
     data = json.loads(request.body)
