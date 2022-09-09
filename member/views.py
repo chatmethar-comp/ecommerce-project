@@ -71,6 +71,7 @@ def create_customer(request):
         name=data['form']['name'],
     )
     customer.save()
+    login(request, user)
     return JsonResponse('Create User Success', safe=False)
 
 # user = models.OneToOneField(

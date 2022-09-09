@@ -3,15 +3,15 @@
 {% block content %}
 <div class="row">
     {% for product in products %}
-    <div class="col-lg-4">
+    <div class="col-lg-4 product-box">
         <img src="{{product.imageURL}}" alt="" class="thumbnail">
         <div class="box-element product">
-            <h6><strong>{{product.name}}</strong></h6>
-            <hr>
-            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">
+            <h5><strong>{{product.name}}</strong></h5>
+            {% comment %} <hr> {% endcomment %}
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">
                 Add to Cart
             </button>
-            <a class="btn btn-outline-success" href="#">View</a>
+
             <h4 style="display: inline; float: right;">{{product.price|floatformat:0}} &#3647;</h4>
         </div>
     </div>

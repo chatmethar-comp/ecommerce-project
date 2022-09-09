@@ -53,16 +53,19 @@
                     save QR
                 </a>
             </div>
-            <div class="mb-3 my-4">
-                <label for="formFile" class="form-label">Upload Slip</label>
-                <input class="form-control" type="file" id="formFile" name="slip">
-              </div>
-            <div class="my-4">
+            <form action="" id="form-verify">
 
-                <label for="appt">Select a time:</label>
-                <input type="time" id="appt" name="appt">
-            </div>
-            <button id="make-payment" class="btn btn-success btn-block my-2">Make payment</button>
+                <div class="mb-3 my-4">
+                    <label for="formFile" class="form-label">Upload Sip</label>
+                    <input class="form-control" type="file" id="formFile" name="receipt" required>
+                </div>
+                <div class="my-4">
+                    
+                    <label for="appt">Select a time:</label>
+                    <input type="time" id="appt" name="appt">
+                </div>
+                <button id="make-payment" class="btn btn-success btn-block my-2">Make payment</button>
+            </form>
         </div>
     </div>
     
@@ -119,6 +122,10 @@
         document.getElementById('form-button').classList.add('hidden');
         document.getElementById('payment-info').classList.remove('hidden');
     });
+
+    document.getElementById('form-verify').addEventListener('click', ()=>{
+        e.preventDefault();
+    })
 
     document.getElementById('make-payment').addEventListener('click', () => {
         submitFormData();

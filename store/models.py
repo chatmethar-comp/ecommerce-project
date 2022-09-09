@@ -90,3 +90,9 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class ReceiptUploaded(models.Model):
+    customer = models.ForeignKey(
+        Customer, on_delete=models.SET_NULL, null=True)
+    Receipt = models.ImageField(null=True, blank=True)
