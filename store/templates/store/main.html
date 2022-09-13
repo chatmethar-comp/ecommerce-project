@@ -54,6 +54,19 @@
         }
         console.log('Cart:', cart);
 
+
+{% comment %} window.addEventListener("DOMContentLoaded", () => {
+    const linkNav = document.querySelector('.navbar');
+    const navHeight = linkNav.getBoundingClientRect().height;
+    console.log(navHeight)
+    if(navHeight === 0){
+        linkNav.style.height = `${navHeight}px`;
+    } else {
+        linkNav.style.height = `0px`;
+    }
+}) {% endcomment %}
+
+
         {% comment %} document.addEventListener('DOMContentLoaded', () => {
             if(user !== 'AnonymousUser'){
                 document.getElementById('login-btn').classList.add('hidden');
@@ -77,9 +90,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                {% comment %} <li class="nav-item active">
                     <a class="nav-link" href="{% url 'dev_profile' %}">Developers <span class="sr-only">(current)</span></a>
-                </li>
+                </li> {% endcomment %}
             </ul>
             <div class="form-inline my-2 my-lg-0">
                 {% if user.is_authenticated %}
@@ -90,14 +103,14 @@
                 <a href="{% url 'login' %}" id="login-btn" class="btn btn-warning">Login</a>
                 <a href="{% url 'register' %}" id="Register-btn" class="btn btn-primary ml-3">Register</a>
                 {% endif %}
-                <div class="input-group">
+                {% comment %} <div class="input-group">
                     <div class="form-outline">
                       <input id="search-input" type="search" id="form1" class="form-control" />
                     </div>
                     <button id="search-button" type="button" class="btn btn-primary">
                       <i class="fas fa-search"></i>
                     </button>
-                </div>
+                </div> {% endcomment %}
                 <a href="{% url 'cart' %}">
                     <img id="cart-icon" src="{% static 'image/cart.png' %}" alt="">
                 </a>
